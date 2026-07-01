@@ -1,0 +1,17 @@
+# 视频文件（太大，单独用Release发布）
+docs/demo/*.mp4
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 临时文件
+*.tmp
+test_chart_output.html
+test_report_output.md
+demo_chart.html
+
+# IDE
+.idea/
+.vscode/
