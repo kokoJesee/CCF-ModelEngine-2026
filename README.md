@@ -44,6 +44,12 @@
     │          │   │ + 问答   │   │ + 可视化  │
     └──────────┘   └──────────┘   └──────────┘
 ```
+> 📐 架构图详见 [`docs/diagrams/`](docs/diagrams/) 目录：
+> - [三任务全景闭环图](docs/diagrams/overview-pipeline.svg)
+> - [五层分层技术架构](docs/diagrams/five-layer-architecture.svg)
+> - [任务二双代理问答架构](docs/diagrams/task2-dual-agent-qa.svg)
+> - [ETL四层流水线架构](docs/diagrams/etl-four-layer-pipeline.svg)
+> - [Docker部署拓扑](docs/diagrams/docker-topology.svg)
 
 ### 任务一：ETL 数据处理流水线
 
