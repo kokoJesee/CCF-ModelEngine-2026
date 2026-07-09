@@ -1,5 +1,8 @@
-# 视频文件（太大，单独用Release发布）
+# 视频文件（太大，百度网盘）
 docs/demo/*.mp4
+
+# 大型补充材料（百度网盘）
+extras/*.zip
 
 # Python
 __pycache__/

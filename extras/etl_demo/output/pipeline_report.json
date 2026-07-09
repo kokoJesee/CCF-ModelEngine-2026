@@ -1,0 +1,150 @@
+{
+  "config": {
+    "data_loader": {
+      "encoding": "utf-8"
+    },
+    "data_cleaner": {
+      "removeDuplicates": true,
+      "handleMissing": "drop",
+      "trimWhitespace": true,
+      "standardizeFormat": true,
+      "privacyCheck": true,
+      "privacyFields": [
+        "name",
+        "phone",
+        "id_card"
+      ]
+    },
+    "data_transformer": {
+      "selectFields": "",
+      "dropFields": "",
+      "renameFields": "{\"name\": \"patient_name\"}",
+      "typeConversions": "{\"age\": \"int\", \"weight\": \"float\", \"height\": \"float\"}",
+      "valueMappings": "{\"gender\": {\"M\": \"男\", \"F\": \"女\"}}",
+      "filterCondition": "",
+      "deriveColumns": "{\"bmi\": \"weight/((height/100)**2)\"}"
+    },
+    "data_exporter": {
+      "outputFormat": "csv",
+      "outputDir": "D:\\PythonProject\\OperatorTest\\ETL_demo\\output",
+      "outputFileName": "medical_data_cleaned",
+      "encoding": "utf-8",
+      "includeHeader": true,
+      "indexColumn": false,
+      "overwrite": true
+    }
+  },
+  "steps": [
+    {
+      "step": "load",
+      "rows": 31,
+      "sources": [
+        "D:\\PythonProject\\OperatorTest\\ETL_demo\\data\\test_medical_data.csv"
+      ],
+      "errors": [],
+      "time_ms": 10.63
+    },
+    {
+      "input_rows": 31,
+      "output_rows": 25,
+      "duplicates_removed": 3,
+      "missing_handled": "3",
+      "privacy_masked": {
+        "phone": 25,
+        "id_card": 25,
+        "name": 25
+      },
+      "quality_metrics": {
+        "null_rate_before": 0.010714285714285714,
+        "null_rate_after": 0.0,
+        "duplicate_rate_after": 0.0
+      },
+      "warnings": [],
+      "summary": "数据清洗完成：原始数据 31 行 → 清洗后 25 行；删除重复行 3 行；处理空值 3 个；空值率从 1.1% 降至 0.0%；脱敏处理 75 处敏感信息。",
+      "step": "clean",
+      "time_ms": 18.44
+    },
+    {
+      "input_rows": 25,
+      "output_rows": 25,
+      "transform_summary": {
+        "rename_count": 1,
+        "select_count": 0,
+        "drop_count": 0,
+        "type_convert_count": 3,
+        "value_replace_count": "25",
+        "filter_count": 0,
+        "derive_count": 1,
+        "_input_columns": 10
+      },
+      "quality_metrics": {
+        "input_columns": 10,
+        "output_columns": 11,
+        "type_mismatch_after": 0
+      },
+      "summary": "数据转换完成：25 行 → 25 行；重命名 1 个字段；类型转换 3 个字段；值替换 25 处；派生 1 个新列。",
+      "warnings": [],
+      "performance": {
+        "total_ms": 7.63,
+        "steps": {
+          "select_fields": {
+            "duration_ms": 0.0,
+            "rows_after": 25
+          },
+          "drop_fields": {
+            "duration_ms": 0.0,
+            "rows_after": 25
+          },
+          "rename_fields": {
+            "duration_ms": 0.47,
+            "rows_after": 25
+          },
+          "type_conversion": {
+            "duration_ms": 0.66,
+            "rows_after": 25
+          },
+          "value_mapping": {
+            "duration_ms": 1.58,
+            "rows_after": 25
+          },
+          "filter_condition": {
+            "duration_ms": 0.0,
+            "rows_after": 25
+          },
+          "derive_columns": {
+            "duration_ms": 4.88,
+            "rows_after": 25
+          }
+        }
+      },
+      "step": "transform",
+      "time_ms": 9.97
+    },
+    {
+      "input_rows": 25,
+      "output_rows": 25,
+      "export_summary": {
+        "format": "csv",
+        "output_path": "D:\\PythonProject\\OperatorTest\\ETL_demo\\output\\medical_data_cleaned.csv",
+        "file_size_bytes": 2402,
+        "encoding": "utf-8",
+        "header_included": true,
+        "index_included": false,
+        "export_time_ms": 3.54
+      },
+      "warnings": [
+        {
+          "type": "file_overwritten",
+          "message": "输出文件已存在，将覆盖: D:\\PythonProject\\OperatorTest\\ETL_demo\\output\\medical_data_cleaned.csv"
+        }
+      ],
+      "summary": "数据导出完成：25 行，CSV 格式，输出到 D:\\PythonProject\\OperatorTest\\ETL_demo\\output\\medical_data_cleaned.csv，文件大小 2.3KB。",
+      "step": "export",
+      "time_ms": 6.45
+    }
+  ],
+  "total_time_ms": 45.6,
+  "success": true,
+  "error": null,
+  "output_path": "D:\\PythonProject\\OperatorTest\\ETL_demo\\output\\medical_data_cleaned.csv"
+}

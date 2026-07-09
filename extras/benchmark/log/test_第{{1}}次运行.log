@@ -1,0 +1,264 @@
+2026-05-01 12:41:31.728 | INFO     | datamate.wrappers.executor:__init__:36 - Initing Ray ...
+2026-05-01 12:41:34,067	WARNING services.py:2213 -- WARNING: The object store is using /tmp/ray instead of /dev/shm because /dev/shm has only 67076096 bytes available. This will harm performance! You may be able to free up space by deleting files in /dev/shm. If you are inside a Docker container, you can increase /dev/shm size by passing '--shm-size=5.00gb' to 'docker run' (or add it to the run_options list in a Ray cluster config). Make sure to set this to more than 30% of available RAM.
+2026-05-01 12:41:35,192	INFO worker.py:2003 -- Started a local Ray instance. View the dashboard at [1m[32mhttp://127.0.0.1:8265 [39m[22m
+/usr/local/lib/python3.11/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+2026-05-01 12:41:36.053 | INFO     | __main__:run:30 - Loading dataset with Ray...
+2026-05-01 12:41:36.530 | INFO     | __main__:run:41 - Processing data...
+2026-05-01 12:41:36.530 | INFO     | datamate.core.dataset:load_ops_module:146 - Import Ops module DataLoaderMapper Success.
+2026-05-01 12:41:36.530 | INFO     | datamate.core.dataset:load_ops_module:146 - Import Ops module DataCleaner Success.
+2026-05-01 12:41:36.530 | INFO     | datamate.core.dataset:load_ops_module:146 - Import Ops module DataTransformer Success.
+2026-05-01 12:41:36.530 | INFO     | datamate.core.dataset:load_ops_module:146 - Import Ops module DataExporter Success.
+2026-05-01 12:41:36.535 | INFO     | __main__:run:45 - All Ops are done in 0.005s.
+2026-05-01 12:41:36,557	INFO logging.py:416 -- Registered dataset logger for dataset dataset_6_0
+2026-05-01 12:41:36,601	INFO streaming_executor.py:166 -- Starting execution of Dataset dataset_6_0. Full logs are in /tmp/ray/session_2026-05-01_12-41-31_733610_2077/logs/ray-data
+2026-05-01 12:41:36,601	INFO streaming_executor.py:167 -- Execution plan of Dataset dataset_6_0: InputDataBuffer[Input] -> TaskPoolMapOperator[MapBatches(process_batch_arrow)] -> ActorPoolMapOperator[Map(DataLoaderMapper)] -> ActorPoolMapOperator[Map(DataCleaner)] -> ActorPoolMapOperator[Map(DataTransformer)] -> ActorPoolMapOperator[Map(DataExporter)]
+[2026-05-01 12:41:36,619 E 2077 2077] core_worker.cc:2194: Actor with class name: 'MapWorker(Map(DataLoaderMapper))' and ID: '55266ac07cd95220460aac3f01000000' has constructor arguments in the object store and max_restarts > 0. If the arguments in the object store go out of scope or are lost, the actor restart will fail. See https://github.com/ray-project/ray/issues/53727 for more details.
+2026-05-01 12:41:36,657	WARNING resource_manager.py:169 -- ⚠️  Ray's object store is configured to use only 42.9% of available memory (4.5GiB out of 10.6GiB total). For optimal Ray Data performance, we recommend setting the object store to at least 50% of available memory. You can do this by setting the 'object_store_memory' parameter when calling ray.init() or by setting the RAY_DEFAULT_OBJECT_STORE_MEMORY_PROPORTION environment variable.
+2026-05-01 12:41:36,657	WARNING __init__.py:28 -- Progress bars disabled. To enable, set `ray.data.DataContext.get_current().enable_progress_bars = True`.
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::MapWorker(Map(DataLoaderMapper)).__init__()[39m (pid=2923, ip=172.20.0.5, actor_id=55266ac07cd95220460aac3f01000000, repr=MapWorker(Map(DataLoaderMapper)))
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 649, in __init__
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     self._init_udf_with_retries(ctx)
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 676, in _init_udf_with_retries
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     raise last_exception
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 665, in _init_udf_with_retries
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     self._map_transformer.init()
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_transformer.py", line 198, in init
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     self._init_fn()
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/planner/plan_udf_map_op.py", line 672, in init_fn
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     udf_instances[udf_key] = spec.instantiation_class(
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/util.py", line 72, in __init__
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     super().__init__(*args, **kwargs)
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/opt/runtime/datamate/ops/user/data_loader/__init__.py", line 10, in __init__
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     self._inner = _DataLoaderMapper(*args, **kwargs)
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 80, in __init__
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     self._validate_and_normalize_paths()
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m   File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 265, in _validate_and_normalize_paths
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m     raise ValueError("file_paths 不能为空")
+[36m(MapWorker(Map(DataLoaderMapper)) pid=2923)[0m ValueError: file_paths 不能为空
+2026-05-01 12:41:39,117	INFO streaming_executor.py:294 -- ⚠️  Dataset dataset_6_0 execution failed
+2026-05-01 12:41:39,121	ERROR exceptions.py:73 -- Exception occurred in Ray Data or Ray Core internal code. If you continue to see this error, please open an issue on the Ray project GitHub page with the full stack trace below: https://github.com/ray-project/ray/issues/new/choose
+2026-05-01 12:41:39,121	ERROR exceptions.py:81 -- Full stack trace:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/ray/data/exceptions.py", line 49, in handle_trace
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/plan.py", line 469, in execute
+    bundle = execute_to_ref_bundle(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/legacy_compat.py", line 115, in execute_to_ref_bundle
+    ref_bundle = RefBundle.merge_ref_bundles(bundles)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/interfaces/ref_bundle.py", line 335, in merge_ref_bundles
+    bundles = list(bundles)
+              ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/interfaces/executor.py", line 34, in __next__
+    return self.get_next()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/streaming_executor.py", line 673, in get_next
+    bundle = state.get_output_blocking(output_split_idx)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/streaming_executor_state.py", line 319, in get_output_blocking
+    raise self._exception
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/streaming_executor.py", line 343, in run
+    continue_sched = self._scheduling_loop_step(self._topology)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/streaming_executor.py", line 416, in _scheduling_loop_step
+    num_errored_blocks = process_completed_tasks(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/streaming_executor_state.py", line 507, in process_completed_tasks
+    task.on_task_finished()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/interfaces/physical_operator.py", line 335, in on_task_finished
+    self._task_done_callback()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_operator.py", line 632, in _task_done_callback
+    task_done_callback()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 342, in <lambda>
+    lambda: _task_done_callback(res_ref),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 335, in _task_done_callback
+    has_actor = self._actor_pool.pending_to_running(res_ref) is not None
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 931, in pending_to_running
+    actor_location: NodeIdStr = ray.get(ready_ref)
+                                ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/_private/worker.py", line 1025, in get_objects
+    raise value
+ray.exceptions.ActorDiedError: The actor died because of an error raised in its creation task, [36mray::MapWorker(Map(DataLoaderMapper)).__init__()[39m (pid=2923, ip=172.20.0.5, actor_id=55266ac07cd95220460aac3f01000000, repr=MapWorker(Map(DataLoaderMapper)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 649, in __init__
+    self._init_udf_with_retries(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 676, in _init_udf_with_retries
+    raise last_exception
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 665, in _init_udf_with_retries
+    self._map_transformer.init()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_transformer.py", line 198, in init
+    self._init_fn()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/planner/plan_udf_map_op.py", line 672, in init_fn
+    udf_instances[udf_key] = spec.instantiation_class(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/util.py", line 72, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/runtime/datamate/ops/user/data_loader/__init__.py", line 10, in __init__
+    self._inner = _DataLoaderMapper(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 80, in __init__
+    self._validate_and_normalize_paths()
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 265, in _validate_and_normalize_paths
+    raise ValueError("file_paths 不能为空")
+ValueError: file_paths 不能为空
+2026-05-01 12:41:39.187 | INFO     | datamate.sql_manager.sql_manager:_get_engine:50 - Database Engine initialized successfully.
+[33m(raylet)[0m Task MapWorker(Map(DataLoaderMapper)).get_location failed. There are infinite retries remaining, so the task will be retried. Error: Traceback (most recent call last):
+
+  File "python/ray/_raylet.pyx", line 1850, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 1961, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 1857, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 1800, in ray._raylet.execute_task.function_executor
+
+  File "/usr/local/lib/python3.11/site-packages/ray/_private/function_manager.py", line 721, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/lib/python3.11/site-packages/ray/util/tracing/tracing_helper.py", line 461, in _resume_span
+    return method(self, *_args, **_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 649, in __init__
+    self._init_udf_with_retries(ctx)
+
+  File "/usr/local/lib/python3.11/site-packages/ray/util/tracing/tracing_helper.py", line 461, in _resume_span
+    return method(self, *_args, **_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 676, in _init_udf_with_retries
+    raise last_exception
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 665, in _init_udf_with_retries
+    self._map_transformer.init()
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_transformer.py", line 198, in init
+    self._init_fn()
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/planner/plan_udf_map_op.py", line 672, in init_fn
+    udf_instances[udf_key] = spec.instantiation_class(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/util.py", line 72, in __init__
+    super().__init__(*args, **kwargs)
+
+  File "/opt/runtime/datamate/ops/user/data_loader/__init__.py", line 10, in __init__
+    self._inner = _DataLoaderMapper(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 80, in __init__
+    self._validate_and_normalize_paths()
+
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 265, in _validate_and_normalize_paths
+    raise ValueError("file_paths 不能为空")
+
+ValueError: file_paths 不能为空
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "python/ray/_raylet.pyx", line 2308, in ray._raylet.task_execution_handler
+
+  File "python/ray/_raylet.pyx", line 2157, in ray._raylet.execute_task_with_cancellation_handler
+
+  File "python/ray/_raylet.pyx", line 1802, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 1803, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 2050, in ray._raylet.execute_task
+
+  File "python/ray/_raylet.pyx", line 1031, in ray._raylet.store_task_errors
+
+ray.exceptions.ActorDiedError: The actor died because of an error raised in its creation task, [36mray::MapWorker(Map(DataLoaderMapper)).__init__()[39m (pid=2923, ip=172.20.0.5, actor_id=55266ac07cd95220460aac3f01000000, repr=MapWorker(Map(DataLoaderMapper)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 649, in __init__
+    self._init_udf_with_retries(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 676, in _init_udf_with_retries
+    raise last_exception
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 665, in _init_udf_with_retries
+    self._map_transformer.init()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_transformer.py", line 198, in init
+    self._init_fn()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/planner/plan_udf_map_op.py", line 672, in init_fn
+    udf_instances[udf_key] = spec.instantiation_class(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/util.py", line 72, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/runtime/datamate/ops/user/data_loader/__init__.py", line 10, in __init__
+    self._inner = _DataLoaderMapper(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 80, in __init__
+    self._validate_and_normalize_paths()
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 265, in _validate_and_normalize_paths
+    raise ValueError("file_paths 不能为空")
+ValueError: file_paths 不能为空
+
+ray.data.exceptions.SystemException
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/runtime/datamate/wrappers/datamate_executor.py", line 74, in <module>
+    raise e
+  File "/opt/runtime/datamate/wrappers/datamate_executor.py", line 71, in <module>
+    executor.run()
+  File "/opt/runtime/datamate/wrappers/datamate_executor.py", line 47, in run
+    dataset.data.materialize()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/dataset.py", line 6697, in materialize
+    bundle: RefBundle = copy._plan.execute()
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/exceptions.py", line 89, in handle_trace
+    raise e.with_traceback(None) from SystemException()
+ray.exceptions.ActorDiedError: The actor died because of an error raised in its creation task, [36mray::MapWorker(Map(DataLoaderMapper)).__init__()[39m (pid=2923, ip=172.20.0.5, actor_id=55266ac07cd95220460aac3f01000000, repr=MapWorker(Map(DataLoaderMapper)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 649, in __init__
+    self._init_udf_with_retries(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 676, in _init_udf_with_retries
+    raise last_exception
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/actor_pool_map_operator.py", line 665, in _init_udf_with_retries
+    self._map_transformer.init()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/operators/map_transformer.py", line 198, in init
+    self._init_fn()
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/planner/plan_udf_map_op.py", line 672, in init_fn
+    udf_instances[udf_key] = spec.instantiation_class(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ray/data/_internal/execution/util.py", line 72, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/runtime/datamate/ops/user/data_loader/__init__.py", line 10, in __init__
+    self._inner = _DataLoaderMapper(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 80, in __init__
+    self._validate_and_normalize_paths()
+  File "/opt/runtime/datamate/ops/user/data_loader/process.py", line 265, in _validate_and_normalize_paths
+    raise ValueError("file_paths 不能为空")
+ValueError: file_paths 不能为空
+[36m(MapWorker(Map(DataTransformer)) pid=2924)[0m numexpr 不可用，df.eval() 将回退到 Python 引擎
