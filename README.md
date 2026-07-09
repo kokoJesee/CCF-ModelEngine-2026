@@ -398,14 +398,66 @@ CCF-ModelEngine-2026/
 
 ---
 
-## 🎬 演示视频
+## 🎬 演示视频与运行截图
+
+### 演示视频
 
 > 视频文件较大，已上传至百度网盘：
 
 | 内容 | 链接 |
 |:---|:---|
 | 📦 **Nexent 演示（三任务全流程）** | [百度网盘](https://pan.baidu.com/s/1-u9zrliYjX2wVUaCoTjhFQ?pwd=vp3p) |
+| 🤖 **Nexent 智能体基本信息录屏** | 同一网盘文件夹内 |
 | 🔑 提取码 | `vp3p` |
+
+### 运行截图
+
+<details>
+<summary>🖥️ 环境与 MCP 配置（点击展开）</summary>
+
+**Nexent + DataMate 容器启动成功**
+
+![Nexent + DataMate Startup](docs/screenshots/nexent-datamate-startup.png)
+
+**DataMate MCP Server 启动**
+
+![MCP Server Startup](docs/screenshots/mcp-server-startup.png)
+
+**Nexent 中 MCP 服务器配置**
+
+![Nexent MCP Config](docs/screenshots/nexent-mcp-config.png)
+
+</details>
+
+<details>
+<summary>📊 DataMate 算子市场（点击展开）</summary>
+
+| 数据加载算子 | 数据清洗算子 | 数据转换算子 | 数据导出算子 |
+|:---:|:---:|:---:|:---:|
+| ![Data Loader](docs/screenshots/datamate-operator-data-loader.png) | ![Data Cleaner](docs/screenshots/datamate-operator-data-cleaner.png) | ![Data Transformer](docs/screenshots/datamate-operator-data-transformer.png) | ![Data Exporter](docs/screenshots/datamate-operator-data-exporter.png) |
+
+| 医疗实体识别算子 | 医疗关系抽取算子 | 知识图谱三元组生成算子 |
+|:---:|:---:|:---:|
+| ![Entity Recognizer](docs/screenshots/datamate-operator-entity-recognizer.png) | ![Relation Extractor](docs/screenshots/datamate-operator-relation-extractor.png) | ![Triple Generator](docs/screenshots/datamate-operator-triple-generator.png) |
+
+</details>
+
+<details>
+<summary>🔄 DataMate 任务执行（点击展开）</summary>
+
+**源数据预览**
+
+![Source Data Preview](docs/screenshots/datamate-file-preview.png)
+
+**ETL 任务执行摘要**
+
+![Task Summary](docs/screenshots/datamate-task-summary.png)
+
+**四步算子执行报告**
+
+![Task Operators](docs/screenshots/datamate-task-operators.png)
+
+</details>
 
 ---
 
