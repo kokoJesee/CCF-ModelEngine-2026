@@ -434,7 +434,7 @@ CCF-ModelEngine-2026/
 
 | 数据加载算子 | 数据清洗算子 | 数据转换算子 | 数据导出算子 |
 |:---:|:---:|:---:|:---:|
-| ![Data Loader](docs/screenshots/datamate-operator-data-loader.png) | ![Data Cleaner](docs/screenshots/datamate-operator-data-cleaner.png) | ![Data Transformer](docs/screenshots/datamate-operator-data-transformer.png) | ![Data Exporter](docs/screenshots/datamate-operator-data-exporter.png) |
+| ![Data Loader](docs/screenshots/datamate-operator-data-loader.png) | <img src="docs/screenshots/datamate-operator-data-cleaner.png" width="200"><br><img src="docs/screenshots/datamate-operator-data-cleaner-detail.png" width="200"> | ![Data Transformer](docs/screenshots/datamate-operator-data-transformer.png) | ![Data Exporter](docs/screenshots/datamate-operator-data-exporter.png) |
 
 | 医疗实体识别算子 | 医疗关系抽取算子 | 知识图谱三元组生成算子 |
 |:---:|:---:|:---:|
