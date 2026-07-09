@@ -211,7 +211,7 @@ python run_demo.py
 
 > ⚠️ **平台源码较大（~80MB），已压缩上传至百度网盘，请先下载。**
 
-1. 打开百度网盘，下载 `nexent-modified.zip` 和 `datamate-modified.zip`
+1. 下载 `nexent-modified.zip` 和 `datamate-modified.zip`：[百度网盘](https://pan.baidu.com/s/11u6vqssLMTMMWRsHpf7rkw?pwd=9r25)（提取码 `9r25`）
 2. 分别解压到本地目录
 3. 参照 `docker/README.md` 配置环境变量
 
@@ -411,11 +411,11 @@ CCF-ModelEngine-2026/
 
 ## 📦 补充材料索引
 
-以下材料因文件较大，已压缩上传至**百度网盘**（与演示视频同一目录）：
+以下材料因文件较大，已压缩上传至**百度网盘**：
 
-| 材料 | 大小 | 说明 |
-|:---|:---:|:---|
-| `nexent-modified.zip` | ~32 MB | 魔改后的 Nexent 平台完整源码 |
-| `datamate-modified.zip` | ~3 MB | 魔改后的 DataMate 平台完整源码（不含系统级依赖） |
+| 内容 | 链接 |
+|:---|:---|
+| 📦 **Nexent + DataMate 魔改源码** | [百度网盘](https://pan.baidu.com/s/11u6vqssLMTMMWRsHpf7rkw?pwd=9r25) |
+| 🔑 提取码 | `9r25` |
 
 > 💡 **提示**：仓库内 `extras/` 目录中包含其他可直接使用的补充材料（算子 ZIP、性能评测脚本、ETL Demo），无需从网盘下载。
